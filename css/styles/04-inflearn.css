@@ -1,0 +1,107 @@
+/* css에서 변수선언하는 방법은 :root{} 이렇게 입력하고, {}안에 key와value값을 설정함 */
+/* key값은 아무렇게나 정해도되고 value값은 css값을 설정함 */
+:root {
+  --primaryColor: green;
+  --errorColor: red;
+}
+
+html {
+  box-sizing: border-box;
+  /* 박스모델(content, paddign, border, margin)을 설정할때 사용 */
+  /* content-box는 영역의 크기를 지정할때 padding과 border를 제외한 content크기만 계산 */
+  /* border-box는 영역의 크기를 지정할때 padding과 border를 포함한 content크기를 계산 */
+  /* 일반적으로 컨텐츠크기를 지정할땐 padding과 border도 포함함 */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  /* 수직중앙정렬 */
+  justify-content: center;
+  /* 수평중앙정렬 */
+  min-height: 100vh;
+  /* 뷰포트의 높이를 100%를 최소높이로 지정(가변적임) */
+  background-color: white;
+}
+/* display:flex를 적용한 태그는 부모태그이고, div태그는 자식태그임 */
+
+#wrapper {
+  width: 420px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.2);
+  /* box-shadow의 역할은 영역의 그림자를 설정함 */
+  /* 0px은 수평방향의 그림자를 생성 */
+  /* 4px은 수직방향의 그림자를 생성 */
+  /* 14px은 그림자의 블러값(그림자의 흐림정도)을 설정 */
+  /* rgba(0,0,0,0.2)은 그림자색깔 설정 */
+}
+
+h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.inputGroup {
+  padding: 8px 12px;
+  /* 8px은 패딩의 위아래, 12px은 패딩의 양옆(오른쪽, 왼쪽)의 간격임 */
+}
+
+.inputGroup label {
+  display: block;
+  padding: 12px 0;
+}
+
+.inputGroup input {
+  display: block;
+  /* display: block은 영역(2차원)과 공간(3차원)을 가짐 */
+  /* display: inline은 영역(2차원)과 공간(3차원)을 가지지못함. 즉, width와 height설정이 불가능함 */
+  /* display: inline-block은 영역과 공간을 가지며, 요소하나가 가로줄을 다 차지하지는 않으면서, 여러요소가 쌓일 수 있음 */
+  width: 93%;
+  padding: 12px;
+  border: 2px solid #e2e2e2;
+  font-size: 16px;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  /* 테두리를 보이지않게 하는것 */
+  border-color: #777;
+  /* 테두리 색깔지정 */
+}
+
+.inputGroup input:valid {
+  border-color: var(--primaryColor);
+  /* .valid는 자바스크립트로 가상의 css선택자를 설정함 */
+  /* var(key값)는 key의 value값을 리턴해줌 */
+}
+
+.inputGroup input:invalid {
+  border-color: var(--errorColor);
+  visibility: visible;
+}
+
+.inputGroup .helperText {
+  display: block;
+  padding-top: 8px;
+}
+
+.inputGroup input:valid + .helperText {
+  visibility: hidden;
+}
+
+.inputGroup input:invalid + .helperText {
+  color: var(--errorColor);
+}
+
+#wrapper button {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  height: 50px;
+  margin-bottom: 25px;
+  font-size: 18px;
+  background-color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  color: white;
+  /* 텍스트색깔 */
+  cursor: pointer;
+}
